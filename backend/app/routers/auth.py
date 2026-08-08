@@ -52,7 +52,7 @@ async def github_callback(request: Request):
         })
 
         return RedirectResponse(
-            url=f"http://127.0.0.1:5173/auth-success?token={jwt_token}"
+            url=f"https://ab-talks-nexify-d5zq.vercel.app//auth-success?token={jwt_token}"
         )
 
     except Exception as e:
