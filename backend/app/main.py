@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from app.routers.resume import router as resume_router
 from starlette.middleware.sessions import SessionMiddleware
 from app.routers.auth import router as auth_router
+from app.routers.resume import router as resume_router
+
+
 import os
 
 from pathlib import Path
@@ -16,6 +20,7 @@ app = FastAPI(
     title="QORA Backend",
     version="1.0.0"
 )
+
 app.add_middleware(
     SessionMiddleware,
     secret_key=SECRET_KEY,
@@ -46,3 +51,4 @@ def health():
     }
     
 app.include_router(auth_router)
+app.include_router(resume_router)
