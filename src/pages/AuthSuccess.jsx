@@ -20,6 +20,7 @@ const AuthSuccess = () => {
       }, 1000);
     }
   }, [navigate]);
+  
 
   return (
     <div
