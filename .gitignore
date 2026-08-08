@@ -26,3 +26,15 @@ dist-ssr
 # Environment variables
 .env
 backend/.env
+# Environment
+.env
+backend/.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Uploads
+uploads/
+backend/uploads/

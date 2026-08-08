@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import "../styles/dashboard.css";
 import {
   FaFileAlt,
   FaRobot,
@@ -31,7 +31,29 @@ function Home() {
 
         </div>
 
-        {/* Dashboard Cards */}
+        <div className="stats-grid">
+
+          <div className="stat-card">
+            <h3>ATS Score</h3>
+            <h1>82%</h1>
+          </div>
+
+          <div className="stat-card">
+            <h3>Job Match</h3>
+            <h1>76%</h1>
+          </div>
+
+          <div className="stat-card">
+            <h3>Interviews</h3>
+            <h1>5</h1>
+          </div>
+
+          <div className="stat-card">
+            <h3>Resume</h3>
+            <h1>Uploaded</h1>
+          </div>
+
+        </div>
 
         <div className="dashboard-grid">
 
@@ -157,11 +179,12 @@ function Home() {
       </div>
     </>
   );
-}
-const handleLogout = () => {
+  const handleLogout = () => {
   localStorage.removeItem("token");
   window.location.href = "/auth";
 };
+}
+
 <button
   onClick={handleLogout}
   style={{

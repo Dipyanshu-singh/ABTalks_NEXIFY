@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/qora-logo.png";
+import "./Navbar.css";
+
 import {
   FaHome,
   FaFileAlt,

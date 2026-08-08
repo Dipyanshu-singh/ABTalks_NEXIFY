@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from app.routers.job import router as job_router
+from app.routers.interview import router as interview_router
 from app.routers.resume import router as resume_router
 from starlette.middleware.sessions import SessionMiddleware
 from app.routers.auth import router as auth_router
@@ -52,3 +54,5 @@ def health():
     
 app.include_router(auth_router)
 app.include_router(resume_router)
+app.include_router(job_router)
+app.include_router(interview_router)

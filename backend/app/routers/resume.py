@@ -48,6 +48,13 @@ async def upload_resume(file: UploadFile = File(...)):
         extracted_text = extract_text_from_docx(str(file_path))
 
     analysis = analyze_resume_with_gemini(extracted_text)
+    STORAGE = Path(__file__).resolve().parents[2] / "storage"
+    STORAGE.mkdir(exist_ok=True)
+
+    (STORAGE / "resume.txt").write_text(
+        extracted_text,
+        encoding="utf-8"
+    )
 
     return {
         "message": "Resume uploaded successfully",

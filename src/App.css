@@ -1543,7 +1543,74 @@ body {
 
     border:2px solid #7c3aed;
 }
+.card,
+.summary-card,
+.score-card {
+    color: #111827;
+}
+.layout{
+    display:flex;
+    min-height:100vh;
+}
 
+.content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    background:#0f172a;   /* or #f8fafc for a light theme */
+    color:white;
+    min-height:100vh;
+    padding:30px;
+}
+.main-content {
+  padding: 30px;
+}
+.summary-card p,
+.card li {
+    color: #374151;
+    line-height: 1.6;
+}
+.ats-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+padding:40px;
+}
+
+.card,.summary-card,.score-card{
+background:white;
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.score-card{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.chips{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.chip{
+background:#6366f1;
+color:white;
+padding:8px 16px;
+border-radius:20px;
+font-weight:600;
+}
+
+ul{
+padding-left:20px;
+}
+
+li{
+margin:8px 0;
+}
 .cta-login:hover,
 .cta-signup:hover{
 
