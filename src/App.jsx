@@ -27,7 +27,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/auth-success" element={<AuthSuccess />} />
 
-        {/* Protected Layout */}
+        {/* Protected Routes */}
         <Route
           element={
             <ProtectedRoute>
