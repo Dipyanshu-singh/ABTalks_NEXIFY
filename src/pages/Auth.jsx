@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/qora-logo.png";
+import { FaGithub } from "react-icons/fa";
 import {
     FaUser,
     FaLock,
@@ -103,7 +104,26 @@ const Auth = () => {
                             </>
                         )}
                     </button>
-
+                    <button
+                        type="button"
+                        onClick={() => {
+                            window.location.href = "http://127.0.0.1:8000/login/github";
+                        }}
+                        style={{
+                            width: "100%",
+                            marginTop: "15px",
+                            background: "#24292e",
+                            color: "white",
+                            border: "none",
+                            padding: "12px",
+                            borderRadius: "10px",
+                            cursor: "pointer",
+                            fontWeight: "600",
+                        }}
+                    >
+                        <FaGithub style={{ marginRight: "8px" }} />
+                        Continue with GitHub
+                    </button>
                 </form>
                 <div className="divider">
                     <span>OR</span>
