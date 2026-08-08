@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+    radial-gradient(circle at 50% 35%, #123b72 0%, #081c3a 45%, #040f22 100%);
+
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  width: 100%;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(4, 15, 34, 0.65);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #22d3ee;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: #dbeafe;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #22d3ee;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  min-height: calc(100vh - 76px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 80px 6% 100px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft background glow */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  background: rgba(34, 211, 238, 0.10);
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  top: 15%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 1050px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   BADGE
+========================================= */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 15px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  border-radius: 999px;
+
+  background: rgba(34, 211, 238, 0.08);
+
+  color: #22d3ee;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.hero h1 {
+  max-width: 850px;
+
+  font-size: clamp(3rem, 7vw, 5.5rem);
+
+  line-height: 1.02;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 25px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #22d3ee
+  );
+
+  background-clip: text;
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+color: transparent;
+}
+
+.hero-subtitle {
+  max-width: 720px;
+
+  color: #b8c9df;
+
+  font-size: 1.1rem;
+  line-height: 1.7;
+
+  margin-bottom: 34px;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 65px;
+}
+
+.hero-buttons a,
+.hero-buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 125px;
+
+  padding: 12px 22px;
+
+  border-radius: 10px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-primary {
+  background: #22d3ee;
+  color: #06152b;
+
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(34, 211, 238, 0.35);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   FEATURE CARDS
+========================================= */
+
+.features {
+  width: 100%;
+  max-width: 1050px;
+
+  display: flex;
+
+  align-items: stretch;
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.feature-card {
+  flex: 1;
+
+  min-height: 170px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 28px 24px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
