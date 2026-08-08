@@ -1,7 +1,6 @@
 import os
 import json
 from pathlib import Path
-
 from dotenv import load_dotenv
 from google import genai
 
@@ -14,36 +13,48 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 def analyze_resume_with_gemini(resume_text: str):
 
     prompt = f"""
-You are an expert ATS Resume Reviewer.
+You are an expert ATS (Applicant Tracking System) Resume Reviewer.
 
-Analyze this resume.
+Analyze the following resume.
 
 Return ONLY valid JSON.
+Do NOT use markdown.
+Do NOT wrap in ```json.
+
+Format:
 
 {{
     "ats_score": 0,
     "summary": "",
+    "skills": [],
     "strengths": [],
     "weaknesses": [],
-    "suggestions": [],
-    "skills": []
+    "suggestions": []
 }}
 
 Resume:
+
 {resume_text}
 """
 
     response = client.models.generate_content(
         model="gemini-3.6-flash",
-        contents=prompt,
+        contents=prompt
     )
 
     text = response.text.strip()
 
-    if text.startswith("```json"):
+    print("========== RAW GEMINI RESPONSE ==========")
+    print(text)
+    print("=========================================")
+
+    if text.startswith("```"):
         text = text.replace("```json", "").replace("```", "").strip()
 
-    elif text.startswith("```"):
-        text = text.replace("```", "").strip()
+    analysis = json.loads(text)
 
-    return json.loads(text)
+    print("========== PARSED JSON ==========")
+    print(analysis)
+    print("=================================")
+
+    return analysis

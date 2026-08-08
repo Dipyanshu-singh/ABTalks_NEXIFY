@@ -51,5 +51,5 @@ async def upload_resume(file: UploadFile = File(...)):
 
     return {
         "message": "Resume uploaded successfully",
-        "analysis": analysis,
+        "analysis": analysis
     }

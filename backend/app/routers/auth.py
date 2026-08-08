@@ -27,28 +27,37 @@ oauth.register(
     },
 )
 
-
 @router.get("/login/github")
 async def login_github(request: Request):
     redirect_uri = request.url_for("github_callback")
     print("Redirect URI:", redirect_uri)
     return await oauth.github.authorize_redirect(request, redirect_uri)
 
-
 @router.get("/auth/github/callback", name="github_callback")
 async def github_callback(request: Request):
-    token = await oauth.github.authorize_access_token(request)
+    try:
+        token = await oauth.github.authorize_access_token(request)
+        print("TOKEN:", token)
 
-    resp = await oauth.github.get("user", token=token)
-    user = resp.json()
+        resp = await oauth.github.get("user", token=token)
+        print("STATUS:", resp.status_code)
 
-    jwt_token = create_access_token(
-        {
+        user = resp.json()
+        print("USER:", user)
+
+        jwt_token = create_access_token({
             "id": user["id"],
             "login": user["login"],
             "avatar": user["avatar_url"],
-        }
-    )
+        })
+
+        return RedirectResponse(
+            url=f"http://127.0.0.1:5173/auth-success?token={jwt_token}"
+        )
+
+    except Exception as e:
+        print("ERROR:", repr(e))
+        raise
     
   
     
