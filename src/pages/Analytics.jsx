@@ -10,7 +10,10 @@ import {
 
 const Dashboard = () => {
   return (
-    <div className="app-bg">
+    <div className="app-bg fade-in">
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+      <div className="orb orb-3" />
 
       {/* Navbar */}
       <nav className="glass">
@@ -23,7 +26,7 @@ const Dashboard = () => {
         </div>
       </nav>
 
-      <div className="container" style={{ padding: "40px 0" }}>
+      <div className="container" style={{ padding: "40px 0", position: "relative", zIndex: 2 }}>
 
         {/* Heading */}
         <div

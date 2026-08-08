@@ -33,29 +33,52 @@ export default function Resume() {
         }
     };
 
-    return (
-        <div style={{ padding: "40px" }}>
+return (
+        <div className="app-bg fade-in">
+            <div className="orb orb-1" />
+            <div className="orb orb-2" />
+            <div className="orb orb-3" />
 
-            <h1>AI Resume Analyzer</h1>
+            <div style={{ padding: "20px", position: "relative", zIndex: 2 }}>
 
-            <input
-                type="file"
-                accept=".pdf,.docx"
-                onChange={(e) => setFile(e.target.files[0])}
-            />
+                <h1 className="title">AI Resume Analyzer</h1>
+                <p className="subtitle">
+                    Upload your resume and receive ATS score, keyword suggestions
+                    and AI-powered improvements.
+                </p>
 
-            <br /><br />
+                <div className="card" style={{ maxWidth: 640, textAlign: "center" }}>
+                    <div className="upload-box">
+                        <div style={{ fontSize: 50 }}>📄</div>
+                        <h3 style={{ margin: "15px 0", color: "#fff" }}>
+                            {file ? file.name : "Drag & drop or choose your resume"}
+                        </h3>
+                        <p style={{ color: "#9ca3af", marginBottom: 20 }}>
+                            Supports PDF and DOCX formats
+                        </p>
+                        <input
+                            type="file"
+                            accept=".pdf,.docx"
+                            onChange={(e) => setFile(e.target.files[0])}
+                            style={{
+                                display: "block",
+                                margin: "0 auto 20px",
+                                color: "#fff",
+                            }}
+                        />
 
-            <button onClick={uploadResume}>
-                {loading ? "Analyzing..." : "Analyze Resume"}
-            </button>
-
-            {analysis && (
-                <div style={{ marginTop: "40px" }}>
-                    <ATSDashboard analysis={analysis} />
+                        <button className="btn btn-primary" onClick={uploadResume}>
+                            {loading ? "Analyzing..." : "Analyze Resume"}
+                        </button>
+                    </div>
                 </div>
-            )}
 
+                {analysis && (
+                    <div style={{ marginTop: "40px" }}>
+                        <ATSDashboard analysis={analysis} />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

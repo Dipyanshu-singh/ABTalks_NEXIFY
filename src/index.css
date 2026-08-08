@@ -1,6 +1,48 @@
-/* ==========================
-   Global Styles
-========================== */
+/* =============================
+   InterviewIQ AI — Light SaaS Theme
+   White/off-white bg, dark navy text, green accents
+============================= */
+
+:root {
+  /* Core palette */
+  --bg-black: #f8faf9;
+  --bg-deep: #f1f5f3;
+  --bg-surface: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-bg-strong: rgba(255, 255, 255, 0.95);
+  --glass-border: #e6ebe9;
+  --glass-border-strong: #d7dfdb;
+
+  /* Accents */
+  --accent: #16a34a;
+  --accent-2: #22c55e;
+  --violet: #16a34a;
+  --cyan: #22c55e;
+  --green: #16a34a;
+  --green-soft: #e8f7ee;
+  --red: #ef4444;
+  --amber: #f59e0b;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  /* Effects */
+  --glow: 0 8px 30px rgba(22, 163, 74, 0.12);
+  --glow-strong: 0 12px 34px rgba(22, 163, 74, 0.2);
+  --radius: 20px;
+  --radius-lg: 24px;
+  --radius-pill: 60px;
+  --shadow-float: 0 18px 44px rgba(17, 24, 39, 0.1);
+  --font: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -9,16 +51,12 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #09090f;
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
-  overflow-x: auto;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: var(--bg-black);
+  color: var(--text-primary);
+  font-family: var(--font);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 a {
@@ -52,62 +90,197 @@ section {
 }
 
 ::selection {
-  background: #7c3aed;
+  background: var(--accent);
   color: white;
 }
 
-/* Scrollbar */
-
+/* ===== Light Scrollbar ===== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #111118;
+  background: var(--bg-deep);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#7c3aed, #06b6d4);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
   border-radius: 20px;
+  border: 2px solid var(--bg-deep);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
+  background: var(--violet);
 }
 
-/* Animations */
-
+/* ===== Animations ===== */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes glow {
-
-  0% {
-    box-shadow: 0 0 5px #7c3aed;
-  }
-
-  50% {
-    box-shadow: 0 0 25px #7c3aed;
-  }
-
+@keyframes floatY {
+  0%,
   100% {
-    box-shadow: 0 0 5px #7c3aed;
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(2deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(22, 163, 74, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(22, 163, 74, 0.35);
+  }
+}
+
+@keyframes auroraDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-40px, 30px) scale(0.95);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
   }
 }
 
 .fade-in {
-  animation: fadeIn 0.7s ease;
+  animation: fadeIn 0.7s ease both;
+}
+
+.float-y {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
 }
 
 .glow {
-  animation: glow 2s infinite;
+  animation: glowPulse 2.5s infinite;
+}
+
+/* ===== Light background ===== */
+.app-bg {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(1000px 700px at 100% 0%, rgba(22, 163, 74, 0.05), transparent 55%),
+    radial-gradient(900px 700px at 80% 110%, rgba(34, 197, 94, 0.05), transparent 60%),
+    var(--bg-black);
+  overflow: hidden;
+}
+
+.app-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(17, 24, 39, 0.04) 1px, transparent 1px);
+  background-size: 45px 45px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating soft orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-1 {
+  width: 420px;
+  height: 420px;
+  background: #bbf7d0;
+  top: -100px;
+  left: -80px;
+  animation: auroraDrift 16s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 380px;
+  height: 380px;
+  background: #d1fae5;
+  top: 30%;
+  right: -120px;
+  animation: auroraDrift 20s ease-in-out infinite reverse;
+}
+
+.orb-3 {
+  width: 340px;
+  height: 340px;
+  background: #dcfce7;
+  bottom: -100px;
+  left: 35%;
+  animation: auroraDrift 24s ease-in-out infinite;
+}
+
+/* Floating particles */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #16a34a;
+  border-radius: 50%;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
 }

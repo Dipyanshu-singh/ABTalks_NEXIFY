@@ -43,8 +43,13 @@ function Dashboard() {
       .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <div className="dashboard">
+return (
+    <div className="dashboard app-bg">
+
+      {/* Floating aurora orbs */}
+      <div className="orb orb-1" />
+      <div className="orb orb-2" />
+      <div className="orb orb-3" />
 
       {/* Welcome */}
       <div className="welcome-card">

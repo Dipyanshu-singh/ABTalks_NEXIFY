@@ -17,14 +17,17 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-      <div className="nav-left">
+<div className="nav-left">
 
-        <Link to="/dashboard">
+        <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img
             src={logo}
-            alt="QORA"
+            alt="InterviewIQ AI"
             className="navbar-logo"
           />
+          <span style={{ fontWeight: 800, fontSize: 17, color: "#111827" }}>
+            InterviewIQ AI
+          </span>
         </Link>
 
       </div>

@@ -29,19 +29,24 @@ const Auth = () => {
         }
     };
 
-    return (
+return (
         <div className="auth-page">
+
+            {/* Floating aurora orbs */}
+            <div className="orb orb-1" />
+            <div className="orb orb-2" />
+            <div className="orb orb-3" />
 
             {/* Logo */}
             <img src={logo} alt="QORA" className="top-logo" />
 
             {/* Welcome */}
             <div className="welcome-text">
-                <h1>
-                    Welcome to <span>QORA</span>
+<h1>
+                    Welcome to <span>InterviewIQ AI</span>
                 </h1>
 
-                <p>Quality Opportunity & Recruitment Assistant</p>
+                <p>AI-Powered Smart Interview Platform</p>
             </div>
 
             <div className="login-card">

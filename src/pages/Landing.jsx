@@ -3,17 +3,25 @@ import logo from "../assets/qora-logo.png";
 
 function Landing() {
     return (
-        <div className="landing">
+        <div className="landing app-bg">
+
+            {/* Floating aurora orbs */}
+            <div className="orb orb-1" />
+            <div className="orb orb-2" />
+            <div className="orb orb-3" />
 
             {/* Navbar */}
             <nav className="landing-nav">
 
-                <Link to="/">
+                <Link to="/" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <img
                         src={logo}
-                        alt="QORA"
+                        alt="InterviewIQ AI"
                         className="landing-logo"
                     />
+                    <span style={{ fontWeight: 800, fontSize: 18, color: "#111827" }}>
+                        InterviewIQ AI
+                    </span>
                 </Link>
 
                 <div className="landing-right">
@@ -34,7 +42,7 @@ function Landing() {
 
             </nav>
 
-            {/* Hero Section */}
+{/* Hero Section */}
 
             <section className="hero">
 
@@ -50,6 +58,40 @@ function Landing() {
                         communication before the real interview.
                     </p>
 
+                    <div className="hero-buttons">
+                        <Link to="/auth">
+                            <button className="hero-btn">
+                                Get Started Free
+                            </button>
+                        </Link>
+                        <Link to="/auth">
+                            <button className="hero-btn secondary-btn">
+                                Try Demo
+                            </button>
+                        </Link>
+                    </div>
+
+                </div>
+
+                <div className="hero-right">
+                    <div className="mock-card float-slow">
+                        <div style={{ fontSize: 60 }}>🤖</div>
+                        <h2 style={{ color: "#fff", marginTop: 10 }}>AI Interview</h2>
+                        <h1>92%</h1>
+                        <p style={{ color: "#cbd5e1" }}>Your performance score</p>
+                        <div
+                            style={{
+                                marginTop: 20,
+                                padding: "12px 0",
+                                background: "rgba(34,211,238,0.15)",
+                                borderRadius: 12,
+                                color: "#22d3ee",
+                                fontWeight: 600,
+                            }}
+                        >
+                            🎤 Confidence: High
+                        </div>
+                    </div>
                 </div>
 
             </section>

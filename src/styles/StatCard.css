@@ -1,25 +1,30 @@
-.stat-card{
+/* =============================
+   InterviewIQ AI — Light StatCard
+============================= */
 
-    background:white;
-
-    padding:25px;
-
-    border-radius:16px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
+.stat-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #e6ebe9;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.stat-card h4{
-
-    color:#6b7280;
-
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px rgba(22, 163, 74, 0.15), 0 20px 50px rgba(17, 24, 39, 0.1);
 }
 
-.stat-card h1{
+.stat-card h4 {
+  color: #6b7280;
+  font-weight: 500;
+}
 
-    font-size:42px;
-
-    margin-top:15px;
-
+.stat-card h1 {
+  font-size: 42px;
+  margin-top: 15px;
+  color: #16a34a;
 }
