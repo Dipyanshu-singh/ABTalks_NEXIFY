@@ -58,10 +58,5 @@ async def github_callback(request: Request):
     except Exception as e:
         print("ERROR:", repr(e))
         raise
-    
-  
-    
+       
 
-    return RedirectResponse(
-    url=f"http://127.0.0.1:5173/auth-success?token={jwt_token}"
-    )
