@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
 import "../styles/dashboard.css";
 import {
   FaFileAlt,
@@ -10,12 +13,63 @@ import {
 } from "react-icons/fa";
 
 function Dashboard() {
+  const token = localStorage.getItem("token");
+
+  const user = token
+    ? jwtDecode(token)
+    : {
+      login: "Guest",
+      avatar: "https://github.com/github.png",
+    };
+  const [stats, setStats] = useState({
+    ats_score: 0,
+    job_match: 0,
+    interviews: 0,
+    resume_uploaded: false,
+  });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch("https://abtalks-nexify-1.onrender.com/dashboard", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setStats(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="dashboard">
 
       {/* Welcome */}
       <div className="welcome-card">
-        <h1>Welcome to QORA 👋</h1>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+          }}
+        >
+          <img
+            src={user.avatar}
+            alt=""
+            style={{
+              width: "70px",
+              height: "70px",
+              borderRadius: "50%",
+            }}
+          />
+
+          <div>
+            <h1>Welcome {user.login} 👋</h1>
+            <p>Your AI-powered interview preparation platform.</p>
+          </div>
+        </div>
 
         <p>
           Your AI-powered interview preparation platform.
@@ -30,22 +84,22 @@ function Dashboard() {
 
         <div className="stat-card">
           <h3>ATS Score</h3>
-          <h1>82%</h1>
+          <h1>{stats.ats_score}%</h1>
         </div>
 
         <div className="stat-card">
           <h3>Job Match</h3>
-          <h1>76%</h1>
+          <h1>{stats.job_match}%</h1>
         </div>
 
         <div className="stat-card">
           <h3>Interviews</h3>
-          <h1>5</h1>
+          <h1>{stats.interviews}</h1>
         </div>
 
         <div className="stat-card">
           <h3>Resume</h3>
-          <h1>Uploaded</h1>
+          <h1>{stats.resume_uploaded ? "Uploaded" : "Not Uploaded"}</h1>
         </div>
 
       </div>
