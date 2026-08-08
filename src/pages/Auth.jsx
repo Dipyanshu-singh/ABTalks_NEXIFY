@@ -107,7 +107,7 @@ const Auth = () => {
                     <button
                         type="button"
                         onClick={() => {
-                            window.location.href = "http://127.0.0.1:8000/login/github";
+                            window.location.href = "https://abtalks-nexify-1.onrender.com/login/github";
                         }}
                         style={{
                             width: "100%",
