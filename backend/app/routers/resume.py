@@ -2,6 +2,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 import os
 import shutil
 from pathlib import Path
+from app.ai.gemini_analyzer import analyze_resume_with_gemini
 from uuid import uuid4
 from app.ai.ats import analyze_resume
 from app.services.pdf_parser import extract_text_from_pdf
@@ -46,12 +47,9 @@ async def upload_resume(file: UploadFile = File(...)):
     else:
         extracted_text = extract_text_from_docx(str(file_path))
 
-    analysis = analyze_resume(extracted_text)
+    analysis = analyze_resume_with_gemini(extracted_text)
 
     return {
         "message": "Resume uploaded successfully",
-        "filename": filename,
-        "original_filename": file.filename,
-        "text": extracted_text,
         "analysis": analysis,
     }
