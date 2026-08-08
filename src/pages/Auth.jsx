@@ -16,256 +16,124 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Replace with backend authentication later
-        navigate("/home");
+        if (isLogin) {
+            // Login
+            navigate("/dashboard");
+        } else {
+            // Signup
+            alert("Account created successfully!");
+
+            // Switch back to Login form
+            setIsLogin(true);
+        }
     };
 
     return (
-        <div className="app-bg">
-            <div
-                style={{
-                    minHeight: "100vh",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    padding: "40px",
-                }}
-            >
-                <div className="landing">
+        <div className="auth-page">
 
-                    {/* Left Side */}
+            {/* Logo */}
+            <img src={logo} alt="QORA" className="top-logo" />
 
-                    <div className="hero">
+            {/* Welcome */}
+            <div className="welcome-text">
+                <h1>
+                    Welcome to <span>QORA</span>
+                </h1>
 
-                        <img src={logo} className="heroLogo" />
+                <p>Quality Opportunity & Recruitment Assistant</p>
+            </div>
 
-                        <h1>
-                            Welcome to <span>QORA</span>
-                        </h1>
+            <div className="login-card">
 
-                        <p>
-                            Quality Opportunity & Recruitment Assistant
-                        </p>
+                <h2>{isLogin ? "Welcome Back" : "Create Account"}</h2>
 
-                        <button className="btn">
-                            Explore Platform
-                        </button>
+                <form onSubmit={handleSubmit}>
 
-                    </div>
+                    {!isLogin && (
+                        <div className="input-group">
+                            <FaUser className="input-icon" />
+                            <input
+                                type="text"
+                                placeholder="Full Name"
+                                required
+                            />
+                        </div>
+                    )}
 
-                    {/* Right Side */}
-
-                    <div className="loginCard">
-
-                        {/* Login & Signup Form */}
-
-                    </div>
-
-                </div>
-                {/* Left Panel */}
-                <div
-                    style={{
-                        padding: "60px 45px",
-                        background:
-                            "linear-gradient(160deg,#6d28d9 0%, #0f172a 60%, #0891b2 100%)",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        color: "#fff",
-                    }}
-                >
-                    <h1
-                        style={{
-                            fontSize: "42px",
-                            marginBottom: "15px",
-                            fontWeight: "700",
-                        }}
-                    >
-                        AI Interview
-                    </h1>
-
-                    <p
-                        style={{
-                            color: "#d1d5db",
-                            lineHeight: "1.8",
-                            marginBottom: "30px",
-                        }}
-                    >
-                        Practice technical interviews, upload your resume, receive AI
-                        feedback, and improve your confidence.
-                    </p>
-
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            marginTop: "30px",
-                        }}
-                    >
-                        <img
-                            src={logo}
-                            alt="QORA Logo"
-                            style={{
-                                width: "250px",
-                                height: "auto",
-                                objectFit: "contain",
-                            }}
+                    <div className="input-group">
+                        <FaEnvelope className="input-icon" />
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            required
                         />
                     </div>
-                </div>
 
-                {/* Right Panel */}
-                <div
-                    style={{
-                        padding: "50px 40px",
-                    }}
-                >
-                    <h2
-                        style={{
-                            textAlign: "center",
-                            marginBottom: "25px",
-                        }}
-                    >
-                        {isLogin ? "Welcome Back" : "Create Account"}
-                    </h2>
+                    <div className="input-group">
+                        <FaLock className="input-icon" />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
 
-                    <form onSubmit={handleSubmit}>
-                        {!isLogin && (
-                            <div style={{ position: "relative" }}>
-                                <FaUser
-                                    style={{
-                                        position: "absolute",
-                                        top: "27px",
-                                        left: "15px",
-                                        color: "#7c3aed",
-                                    }}
-                                />
-                                <input
-                                    className="input"
-                                    style={{ paddingLeft: "45px" }}
-                                    type="text"
-                                    placeholder="Full Name"
-                                    required
-                                />
-                            </div>
-                        )}
-
-                        <div style={{ position: "relative" }}>
-                            <FaEnvelope
-                                style={{
-                                    position: "absolute",
-                                    top: "27px",
-                                    left: "15px",
-                                    color: "#7c3aed",
-                                }}
-                            />
+                    {!isLogin && (
+                        <div className="input-group">
+                            <FaLock className="input-icon" />
                             <input
-                                className="input"
-                                style={{ paddingLeft: "45px" }}
-                                type="email"
-                                placeholder="Email Address"
-                                required
-                            />
-                        </div>
-
-                        <div style={{ position: "relative" }}>
-                            <FaLock
-                                style={{
-                                    position: "absolute",
-                                    top: "27px",
-                                    left: "15px",
-                                    color: "#7c3aed",
-                                }}
-                            />
-                            <input
-                                className="input"
-                                style={{ paddingLeft: "45px" }}
                                 type="password"
-                                placeholder="Password"
+                                placeholder="Confirm Password"
                                 required
                             />
                         </div>
+                    )}
+                    <div className="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
 
-                        {!isLogin && (
-                            <div style={{ position: "relative" }}>
-                                <FaLock
-                                    style={{
-                                        position: "absolute",
-                                        top: "27px",
-                                        left: "15px",
-                                        color: "#7c3aed",
-                                    }}
-                                />
-                                <input
-                                    className="input"
-                                    style={{ paddingLeft: "45px" }}
-                                    type="password"
-                                    placeholder="Confirm Password"
-                                    required
-                                />
-                            </div>
-                        )}
-
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                            style={{
-                                width: "100%",
-                                marginTop: "15px",
-                            }}
-                        >
-                            {isLogin ? (
-                                <>
-                                    <FaSignInAlt /> Login
-                                </>
-                            ) : (
-                                <>
-                                    <FaUserPlus /> Sign Up
-                                </>
-                            )}
-                        </button>
-                    </form>
-
-                    <div
-                        style={{
-                            marginTop: "25px",
-                            textAlign: "center",
-                        }}
-                    >
+                    <button className="auth-btn" type="submit">
                         {isLogin ? (
                             <>
-                                Don't have an account?{" "}
-                                <span
-                                    onClick={() => setIsLogin(false)}
-                                    style={{
-                                        color: "#8b5cf6",
-                                        cursor: "pointer",
-                                        fontWeight: "600",
-                                    }}
-                                >
-                                    Sign Up
-                                </span>
+                                <FaSignInAlt /> Login
                             </>
                         ) : (
                             <>
-                                Already have an account?{" "}
-                                <span
-                                    onClick={() => setIsLogin(true)}
-                                    style={{
-                                        color: "#8b5cf6",
-                                        cursor: "pointer",
-                                        fontWeight: "600",
-                                    }}
-                                >
-                                    Login
-                                </span>
+                                <FaUserPlus /> Sign Up
                             </>
                         )}
-                    </div>
+                    </button>
+
+                </form>
+                <div className="divider">
+                    <span>OR</span>
                 </div>
+
+                {isLogin ? (
+                    <p>
+                        Don't have an account?{" "}
+                        <span
+                            className="signup-link"
+                            onClick={() => setIsLogin(false)}
+                        >
+                            Sign Up
+                        </span>
+                    </p>
+                ) : (
+                    <p>
+                        Already have an account?{" "}
+                        <span
+                            className="signup-link"
+                            onClick={() => setIsLogin(true)}
+                        >
+                            Login
+                        </span>
+                    </p>
+                )}
+
             </div>
+
         </div>
-        
     );
 };
 

@@ -8,14 +8,28 @@ function Landing() {
             {/* Navbar */}
             <nav className="landing-nav">
 
-                <img src={logo} alt="QORA" className="landing-logo" />
+                <Link to="/">
+                    <img
+                        src={logo}
+                        alt="QORA"
+                        className="landing-logo"
+                    />
+                </Link>
 
-                <div>
+                <div className="landing-right">
+
                     <Link to="/auth">
                         <button className="login-btn">
-                            Login / Sign Up
+                            Login
                         </button>
                     </Link>
+
+                    <Link to="/auth">
+                        <button className="signup-btn">
+                            Sign Up
+                        </button>
+                    </Link>
+
                 </div>
 
             </nav>
@@ -24,21 +38,19 @@ function Landing() {
 
             <section className="hero">
 
-                <h1>
-                    Ace Every Interview with <span>AI</span>
-                </h1>
+                <div className="hero-left">
 
-                <p>
-                    Upload your resume, practice AI interviews,
-                    receive personalized feedback, and land your
-                    dream job.
-                </p>
+                    <h1>
+                        Ace Every Interview with <span>AI</span>
+                    </h1>
 
-                <Link to="/auth">
-                    <button className="hero-btn">
-                        Get Started
-                    </button>
-                </Link>
+                    <p>
+                        Upload your resume, practice AI-powered interviews,
+                        receive detailed AI feedback and improve your
+                        communication before the real interview.
+                    </p>
+
+                </div>
 
             </section>
 
@@ -66,17 +78,7 @@ function Landing() {
 
                 </div>
 
-                <div className="feature-image">
 
-                    <div className="mock-card">
-                        <h3>Resume Score</h3>
-
-                        <h1>92%</h1>
-
-                        <p>Excellent ATS Compatibility</p>
-                    </div>
-
-                </div>
 
             </section>
 
@@ -84,25 +86,7 @@ function Landing() {
 
             <section className="feature reverse">
 
-                <div className="feature-image">
 
-                    <div className="mock-card">
-
-                        <h3>Interview Room</h3>
-
-                        <h1>🎤</h1>
-
-                        <p>AI Interview in Progress...</p>
-
-                        <br />
-
-                        <button className="hero-btn">
-                            Answer Question
-                        </button>
-
-                    </div>
-
-                </div>
 
                 <div className="feature-text">
 
@@ -150,42 +134,7 @@ function Landing() {
 
                 </div>
 
-                <div className="feature-image">
 
-                    <div className="analytics-card">
-
-                        <h3>Your Interview Score</h3>
-
-                        <div className="score-row">
-                            <span>Technical</span>
-                            <span>90%</span>
-                        </div>
-
-                        <div className="progress">
-                            <div className="progress-fill" style={{ width: "90%" }}></div>
-                        </div>
-
-                        <div className="score-row">
-                            <span>Communication</span>
-                            <span>95%</span>
-                        </div>
-
-                        <div className="progress">
-                            <div className="progress-fill" style={{ width: "95%" }}></div>
-                        </div>
-
-                        <div className="score-row">
-                            <span>Confidence</span>
-                            <span>91%</span>
-                        </div>
-
-                        <div className="progress">
-                            <div className="progress-fill" style={{ width: "91%" }}></div>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </section>
 
@@ -193,36 +142,11 @@ function Landing() {
 
             <section className="feature reverse">
 
-                <div className="feature-image">
 
-                    <div className="feedback-card">
-
-                        <h2>AI Feedback</h2>
-
-                        <div className="feedback-box good">
-                            <h4>✅ Strengths</h4>
-                            <p>Excellent communication</p>
-                            <p>Strong technical concepts</p>
-                        </div>
-
-                        <div className="feedback-box bad">
-                            <h4>⚠ Improvements</h4>
-                            <p>Answer with more examples</p>
-                            <p>Reduce pauses while speaking</p>
-                        </div>
-
-                        <div className="feedback-box">
-                            <h4>⭐ Overall Rating</h4>
-                            <h1 style={{ color: "#7c3aed" }}>9.2 / 10</h1>
-                        </div>
-
-                    </div>
-
-                </div>
 
                 <div className="feature-text">
 
-                    <h2>🤖 Personalized AI Feedback</h2>
+                    <h2>Personalized AI Feedback</h2>
 
                     <p>
                         Every interview is reviewed by AI. Receive detailed feedback on your
@@ -240,63 +164,281 @@ function Landing() {
                 </div>
 
             </section>
-            {/* Why Choose QORA */}
+            {/* What You'll Get with QORA */}
 
-            <section className="why">
+            <section className="benefits">
 
-                <h2>Why Choose QORA?</h2>
+                <h2>🚀 What You'll Get with QORA</h2>
 
-                <p className="why-sub">
-                    Everything you need to prepare for your dream interview in one platform.
+                <p className="benefits-subtitle">
+                    Everything you need to prepare, practice and succeed in your interviews.
                 </p>
 
-                <div className="why-grid">
+                <div className="benefits-grid">
 
-                    <div className="why-card">
-                        <h3>📄 Resume Analyzer</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">📄</div>
+                        <h3>Smart Resume Analysis</h3>
                         <p>
-                            Improve your resume using AI suggestions and ATS optimization.
+                            ATS score, keyword detection and AI-powered resume improvements.
                         </p>
                     </div>
 
-                    <div className="why-card">
-                        <h3>🎤 AI Interview</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">🎤</div>
+                        <h3>AI Mock Interview</h3>
                         <p>
-                            Practice HR and technical interviews with an intelligent AI interviewer.
+                            HR, Technical and Mixed interview practice with AI.
                         </p>
                     </div>
 
-                    <div className="why-card">
-                        <h3>💻 Coding Round</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">🤖</div>
+                        <h3>Personalized Feedback</h3>
                         <p>
-                            Solve coding questions with a built-in code editor.
+                            Confidence, communication and technical evaluation after every interview.
                         </p>
                     </div>
 
-                    <div className="why-card">
-                        <h3>📊 Analytics</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">📊</div>
+                        <h3>Performance Analytics</h3>
                         <p>
-                            Track your progress using detailed performance analytics.
+                            Track interview scores, strengths and improvement trends.
                         </p>
                     </div>
 
-                    <div className="why-card">
-                        <h3>🤖 AI Feedback</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">📁</div>
+                        <h3>Interview History</h3>
                         <p>
-                            Receive personalized strengths, weaknesses, and improvement tips.
+                            Access previous interviews and compare your progress.
                         </p>
                     </div>
 
-                    <div className="why-card">
-                        <h3>📑 Reports</h3>
+                    <div className="benefit-card">
+                        <div className="benefit-icon">📑</div>
+                        <h3>Download Reports</h3>
                         <p>
-                            Download detailed interview reports and monitor your growth.
+                            Export AI interview reports and resume analysis as PDF.
                         </p>
                     </div>
 
                 </div>
 
             </section>
+            {/* ================= HOW QORA WORKS ================= */}
+
+            <section className="workflow">
+
+                <h2>⚡ How QORA Works</h2>
+
+                <p className="workflow-subtitle">
+                    Five simple steps to prepare for your dream interview.
+                </p>
+
+                <div className="workflow-container">
+
+                    <div className="workflow-step">
+                        <div className="step-number">1</div>
+                        <h3>Upload Resume</h3>
+                        <p>Upload your latest resume in PDF or DOCX format.</p>
+                    </div>
+
+                    <div className="workflow-arrow">→</div>
+
+                    <div className="workflow-step">
+                        <div className="step-number">2</div>
+                        <h3>AI Resume Analysis</h3>
+                        <p>Receive ATS score, keyword suggestions and improvements.</p>
+                    </div>
+
+                    <div className="workflow-arrow">→</div>
+
+                    <div className="workflow-step">
+                        <div className="step-number">3</div>
+                        <h3>Start Interview</h3>
+                        <p>Choose HR, Technical or Mixed interview mode.</p>
+                    </div>
+
+                    <div className="workflow-arrow">→</div>
+
+                    <div className="workflow-step">
+                        <div className="step-number">4</div>
+                        <h3>AI Evaluation</h3>
+                        <p>AI evaluates confidence, communication and answers.</p>
+                    </div>
+
+                    <div className="workflow-arrow">→</div>
+
+                    <div className="workflow-step">
+                        <div className="step-number">5</div>
+                        <h3>Results Dashboard</h3>
+                        <p>View analytics, reports and track your progress.</p>
+                    </div>
+
+                </div>
+
+            </section>
+            <section className="stats">
+
+                <div className="stat-card">
+                    <h2>10K+</h2>
+                    <p>Interviews Practiced</p>
+                </div>
+
+                <div className="stat-card">
+                    <h2>95%</h2>
+                    <p>Resume ATS Accuracy</p>
+                </div>
+
+                <div className="stat-card">
+                    <h2>5000+</h2>
+                    <p>Students Helped</p>
+                </div>
+
+                <div className="stat-card">
+                    <h2>24×7</h2>
+                    <p>AI Available</p>
+                </div>
+
+            </section>
+            {/* ================= TESTIMONIALS ================= */}
+
+            <section className="testimonials">
+
+                <h2>❤️ Loved by Students</h2>
+
+                <p className="testimonial-sub">
+                    Thousands of students are improving their interview skills with QORA.
+                </p>
+
+                <div className="testimonial-grid">
+
+                    <div className="testimonial-card">
+                        <h3>⭐⭐⭐⭐⭐</h3>
+
+                        <p>
+                            "The AI interview felt surprisingly real. It helped me improve my confidence before placements."
+                        </p>
+
+                        <h4>— CSE Student</h4>
+                    </div>
+
+                    <div className="testimonial-card">
+                        <h3>⭐⭐⭐⭐⭐</h3>
+
+                        <p>
+                            "Resume analysis gave me ATS suggestions that helped me improve my resume significantly."
+                        </p>
+
+                        <h4>— Software Engineering Student</h4>
+                    </div>
+
+                    <div className="testimonial-card">
+                        <h3>⭐⭐⭐⭐⭐</h3>
+
+                        <p>
+                            "The feedback after every interview helped me understand my weaknesses much better."
+                        </p>
+
+                        <h4>— Final Year Student</h4>
+                    </div>
+
+                </div>
+
+            </section>
+            {/* ================= FAQ ================= */}
+
+            <section className="faq">
+
+                <h2>Frequently Asked Questions</h2>
+
+                <div className="faq-container">
+
+                    <div className="faq-item">
+                        <h3>Can I upload my own resume?</h3>
+                        <p>
+                            Yes. QORA supports PDF and DOCX resumes and provides AI-powered analysis.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3>Does QORA generate interview questions?</h3>
+                        <p>
+                            Yes. AI generates HR and technical questions based on your uploaded resume.
+                        </p>
+                    </div>
+
+                    <div className="faq-item">
+                        <h3>Can I view my previous interview reports?</h3>
+                        <p>
+                            Yes. All interview results, feedback and analytics are available in your dashboard.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+            {/* ================= FINAL CTA ================= */}
+
+            <section className="cta">
+
+                <h2>Ready to Ace Your Next Interview?</h2>
+
+                <p>
+                    Join QORA today and practice with AI-powered interviews,
+                    resume analysis, and personalized feedback.
+                </p>
+
+                <div className="cta-buttons">
+
+                    <Link to="/auth">
+                        <button className="cta-login">
+                            Login
+                        </button>
+                    </Link>
+
+                    <Link to="/auth">
+                        <button className="cta-signup">
+                            Sign Up
+                        </button>
+                    </Link>
+
+                </div>
+
+            </section>
+            {/* ================= FOOTER ================= */}
+
+            <footer className="footer">
+
+                <img
+                    src={logo}
+                    alt="QORA"
+                    className="footer-logo"
+                />
+
+                <p>
+                    Quality Opportunity & Recruitment Assistant
+                </p>
+
+                <div className="footer-links">
+
+                    <a href="#top">Home</a>
+
+                    <a href="#features">Features</a>
+
+                    <a href="#faq">FAQ</a>
+
+                    <Link to="/auth">Login</Link>
+
+                </div>
+
+                <p className="copyright">
+                    © 2026 QORA. All Rights Reserved.
+                </p>
+
+            </footer>
         </div>
     );
 }
