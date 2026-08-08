@@ -3,16 +3,17 @@ import os
 from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 from authlib.integrations.starlette_client import OAuth
-from fastapi.responses import RedirectResponse
-
-router = APIRouter()
-
-oauth = OAuth()
 from dotenv import load_dotenv
 from pathlib import Path
 
+from app.utils.jwt import create_access_token
+
+router = APIRouter()
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 load_dotenv(BASE_DIR / ".env")
+
+oauth = OAuth()
 
 oauth.register(
     name="github",
@@ -26,11 +27,13 @@ oauth.register(
     },
 )
 
+
 @router.get("/login/github")
 async def login_github(request: Request):
     redirect_uri = request.url_for("github_callback")
     print("Redirect URI:", redirect_uri)
     return await oauth.github.authorize_redirect(request, redirect_uri)
+
 
 @router.get("/auth/github/callback", name="github_callback")
 async def github_callback(request: Request):
@@ -39,8 +42,17 @@ async def github_callback(request: Request):
     resp = await oauth.github.get("user", token=token)
     user = resp.json()
 
-    return RedirectResponse(url="http://localhost:5173/analytics")
+    jwt_token = create_access_token(
+        {
+            "id": user["id"],
+            "login": user["login"],
+            "avatar": user["avatar_url"],
+        }
+    )
+    
+  
+    
 
     return RedirectResponse(
-        url=f"http://localhost:5173/analytics?token={jwt_token}"
+    url=f"http://127.0.0.1:5173/auth-success?token={jwt_token}"
     )

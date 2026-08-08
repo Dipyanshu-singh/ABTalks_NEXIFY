@@ -158,5 +158,21 @@ function Home() {
     </>
   );
 }
-
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/auth";
+};
+<button
+  onClick={handleLogout}
+  style={{
+    background: "#ef4444",
+    color: "white",
+    border: "none",
+    padding: "10px 18px",
+    borderRadius: "8px",
+    cursor: "pointer",
+  }}
+>
+  Logout
+</button>
 export default Home;
