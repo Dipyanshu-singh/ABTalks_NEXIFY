@@ -38,16 +38,33 @@ Resume:
 """
 
     response = client.models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 
     text = response.text.strip()
 
-    if text.startswith("```"):
+    # Strip any markdown code fences that may wrap the JSON
+    if "```" in text:
         text = text.replace("```json", "").replace("```", "").strip()
 
-    analysis = json.loads(text)
+    # Extract the first JSON object if the model adds extra prose
+    start = text.find("{")
+    end = text.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        text = text[start:end + 1]
 
+    try:
+        analysis = json.loads(text)
+    except json.JSONDecodeError:
+        # Fallback rather than crashing the whole upload
+        analysis = {
+            "ats_score": 0,
+            "summary": "Could not parse the AI response. Please try again.",
+            "skills": [],
+            "strengths": [],
+            "weaknesses": [],
+            "suggestions": [],
+        }
 
     return analysis

@@ -10,3 +10,7 @@
 - [x] 7. Update CSS comment headers (App.css, index.css, interview.css, dashboard.css, StatCard.css, Navbar.css, Sidebar.css) to QORA
 - [x] 8. Verify frontend builds/serves (`npm run build`)
 
+## Resume Upload Fix
+- [x] 1. Fix invalid `gemini-3.6-flash` model -> `gemini-2.5-flash` in `backend/app/ai/gemini_analyzer.py`
+- [x] 2. Make JSON parsing robust (strip fences, extract JSON object, safe fallback)
+
