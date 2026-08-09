@@ -16,11 +16,11 @@ function Landing() {
                 <Link to="/" style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <img
                         src={logo}
-                        alt="InterviewIQ AI"
+                        alt="QORA"
                         className="landing-logo"
                     />
                     <span style={{ fontWeight: 800, fontSize: 18, color: "#111827" }}>
-                        InterviewIQ AI
+                        QORA
                     </span>
                 </Link>
 

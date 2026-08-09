@@ -31,7 +31,7 @@ export default function Profile() {
 
       <div style={{ padding: 20, position: "relative", zIndex: 2 }}>
         <h1 className="title">Profile</h1>
-        <p className="subtitle">Your InterviewIQ AI account details.</p>
+        <p className="subtitle">Your QORA account details.</p>
 
         <div className="grid grid-2">
           {/* Profile summary */}
@@ -95,7 +95,7 @@ export default function Profile() {
             </div>
 
             <div className="card" style={{ background: "#e8f7ee", marginTop: 12 }}>
-              <h3 style={{ color: "#15803d", marginBottom: 10 }}>InterviewIQ AI</h3>
+              <h3 style={{ color: "#15803d", marginBottom: 10 }}>QORA</h3>
               <p style={{ color: "#6b7280", lineHeight: 1.7 }}>
                 Your subscription is linked to your GitHub account. Resume analysis,
                 AI interviews and performance analytics are available on your dashboard.

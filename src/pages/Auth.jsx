@@ -43,7 +43,7 @@ return (
             {/* Welcome */}
             <div className="welcome-text">
 <h1>
-                    Welcome to <span>InterviewIQ AI</span>
+                    Welcome to <span>QORA</span>
                 </h1>
 
                 <p>AI-Powered Smart Interview Platform</p>

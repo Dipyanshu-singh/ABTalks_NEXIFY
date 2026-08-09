@@ -38,23 +38,16 @@ Resume:
 """
 
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-3.6-flash",
         contents=prompt
     )
 
     text = response.text.strip()
-
-    print("========== RAW GEMINI RESPONSE ==========")
-    print(text)
-    print("=========================================")
 
     if text.startswith("```"):
         text = text.replace("```json", "").replace("```", "").strip()
 
     analysis = json.loads(text)
 
-    print("========== PARSED JSON ==========")
-    print(analysis)
-    print("=================================")
 
     return analysis

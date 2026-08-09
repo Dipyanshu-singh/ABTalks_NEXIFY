@@ -35,11 +35,11 @@ function Navbar() {
         <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img
             src={logo}
-            alt="InterviewIQ AI"
+            alt="QORA"
             className="navbar-logo"
           />
           <span style={{ fontWeight: 800, fontSize: 17, color: "#111827" }}>
-            InterviewIQ AI
+            QORA
           </span>
         </Link>
 
