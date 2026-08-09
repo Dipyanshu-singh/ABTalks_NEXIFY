@@ -1,0 +1,71 @@
+{
+  "cohort_name": "AI Cohort 31-Day Enterprise AI Engineering Program",
+  "modules": [
+    {
+      "module_id": "mod_1",
+      "title": "Prompt Engineering & LLM Fundamentals",
+      "days": [1, 2, 3, 4, 5],
+      "topics": [
+        {"day": 1, "topic": "LLM Tokenization & Architecture Fundamentals", "objectives": "Understand attention mechanisms, token limits, and context windows."},
+        {"day": 2, "topic": "Advanced Prompt Engineering & Chain-of-Thought", "objectives": "Master few-shot prompting, CoT, and system prompt design."},
+        {"day": 3, "topic": "Structured Output & JSON Mode", "objectives": "Enforce strict output schemas using Pydantic and function calling."},
+        {"day": 4, "topic": "LLM Evaluation & Benchmarking", "objectives": "Implement automated evaluation frameworks (BLEU, ROUGE, LLM-as-a-Judge)."},
+        {"day": 5, "topic": "Prompt Security & Prompt Injection Mitigation", "objectives": "Defend against indirect prompt injection and data exfiltration."}
+      ]
+    },
+    {
+      "module_id": "mod_2",
+      "title": "Vector Databases & Retrieval-Augmented Generation (RAG)",
+      "days": [6, 7, 8, 9, 10, 11, 12],
+      "topics": [
+        {"day": 6, "topic": "Embeddings & Vector Space Geometry", "objectives": "Understand dense embeddings, cosine similarity, and dimensionality."},
+        {"day": 7, "topic": "Vector Database Architecture (Chroma, Pinecone, Milvus)", "objectives": "Configure indexing, HNSW algorithms, and hybrid search."},
+        {"day": 8, "topic": "Advanced Chunking Strategies", "objectives": "Implement semantic chunking, recursive splitting, and overlap optimization."},
+        {"day": 9, "topic": "Hybrid Search & BM25 Integration", "objectives": "Combine keyword sparse retrieval with dense vector search."},
+        {"day": 10, "topic": "RAG Re-ranking & Cross-Encoders", "objectives": "Deploy Cohere/BGE re-rankers to improve precision at top-k."},
+        {"day": 11, "topic": "Advanced RAG Pipelines (GraphRAG, RAPTOR)", "objectives": "Build hierarchical summarization and knowledge graph augmented RAG."},
+        {"day": 12, "topic": "RAG Evaluation (Ragas, TruLens)", "objectives": "Measure faithfulness, answer relevance, and context recall."}
+      ]
+    },
+    {
+      "module_id": "mod_3",
+      "title": "Agentic AI & Autonomous Workflows",
+      "days": [13, 14, 15, 16, 17, 18, 19],
+      "topics": [
+        {"day": 13, "topic": "Agent Architectures & ReAct Loop", "objectives": "Implement Reason-Act-Observe loops for tool execution."},
+        {"day": 14, "topic": "Multi-Agent Collaboration & Swarms", "objectives": "Design hierarchical multi-agent teams with specialized roles."},
+        {"day": 15, "topic": "Memory Management & Conversation State", "objectives": "Manage short-term context and long-term episodic vector memory."},
+        {"day": 16, "topic": "Tool Use & Function Calling at Scale", "objectives": "Register dynamic APIs and schemas for autonomous agent invocation."},
+        {"day": 17, "topic": "Planning & Self-Correction Mechanisms", "objectives": "Enable autonomous plan generation, error recovery, and reflection."},
+        {"day": 18, "topic": "Human-in-the-Loop Guardrails", "objectives": "Implement approval gates and safety checkpoints for autonomous agents."},
+        {"day": 19, "topic": "Agent Benchmarking & Evaluation (AgentBench)", "objectives": "Test agentic execution across diverse interactive benchmarks."}
+      ]
+    },
+    {
+      "module_id": "mod_4",
+      "title": "Model Context Protocol (MCP) & Tool Integration",
+      "days": [20, 21, 22, 23, 24],
+      "topics": [
+        {"day": 20, "topic": "Introduction to Model Context Protocol (MCP)", "objectives": "Understand MCP client-server architecture and open standard primitives."},
+        {"day": 21, "topic": "Building Custom MCP Servers", "objectives": "Implement resources, prompts, and tools in Python/TypeScript."},
+        {"day": 22, "topic": "Connecting Local & Remote MCP Services", "objectives": "Securely bridge LLM clients with enterprise databases and APIs."},
+        {"day": 23, "topic": "MCP Security & Access Control", "objectives": "Manage permissions, authentication, and sandboxing for MCP servers."},
+        {"day": 24, "topic": "Production MCP Deployment & Monitoring", "objectives": "Scale MCP servers in containerized cloud environments."}
+      ]
+    },
+    {
+      "module_id": "mod_5",
+      "title": "AI Deployment & Production Systems Reliability",
+      "days": [25, 26, 27, 28, 29, 30, 31],
+      "topics": [
+        {"day": 25, "topic": "LLM Inference Optimization & Quantization", "objectives": "Apply GGUF, AWQ, and vLLM for high-throughput low-latency serving."},
+        {"day": 26, "topic": "API Gateway, Caching, & Rate Limiting", "objectives": "Implement semantic caching and token-bucket rate limiting for LLM APIs."},
+        {"day": 27, "topic": "Observability, Tracing, & Monitoring (LangSmith, Phoenix)", "objectives": "Trace agentic execution steps and debug latency bottlenecks."},
+        {"day": 28, "topic": "Cost Optimization & Token Budgeting", "objectives": "Manage model routing between frontier and open-source models."},
+        {"day": 29, "topic": "Security, Compliance, & PII Redaction", "objectives": "Scrub sensitive data and enforce enterprise data privacy policies."},
+        {"day": 30, "topic": "Fine-Tuning & PEFT (LoRA, QLoRA)", "objectives": "Fine-tune open-source LLMs on domain-specific datasets."},
+        {"day": 31, "topic": "Capstone Integration & Enterprise Architecture", "objectives": "Design end-to-end production-ready generative AI systems."}
+      ]
+    }
+  ]
+}
