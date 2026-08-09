@@ -6,18 +6,16 @@ from app.routers.interview import router as interview_router
 from app.routers.resume import router as resume_router
 from starlette.middleware.sessions import SessionMiddleware
 from app.routers.auth import router as auth_router
-from app.routers.resume import router as resume_router
-
 
 import os
-
 from pathlib import Path
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 GITHUB_CLIENT_ID = os.getenv("GITHUB_CLIENT_ID")
 GITHUB_CLIENT_SECRET = os.getenv("GITHUB_CLIENT_SECRET")
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY") or "default_secret_key"
+
 app = FastAPI(
     title="QORA Backend",
     version="1.0.0"
@@ -28,13 +26,9 @@ app.add_middleware(
     secret_key=SECRET_KEY,
 )
 
-origins = [
-    "http://127.0.0.1:5173",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -51,7 +45,7 @@ def health():
     return {
         "status": "healthy"
     }
-    
+
 app.include_router(auth_router)
 app.include_router(resume_router)
 app.include_router(job_router)

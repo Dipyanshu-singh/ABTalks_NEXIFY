@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function JobMatcher() {
 
@@ -7,36 +8,35 @@ export default function JobMatcher() {
     const [jd, setJd] = useState("");
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     async function analyze() {
 
         try {
-
             setLoading(true);
+            setError(null);
 
             const res = await axios.post(
-                "https://abtalks-nexify-1.onrender.com/job/match",
+                `${API_BASE_URL}/job/match`,
                 {
                     resume_text: resume,
                     job_description: jd,
-                }
+                },
+                { timeout: 60000 }
             );
 
             setResult(res.data);
 
         } catch (err) {
-
-            console.log(err);
-
+            console.error("Job Match error:", err);
+            setError(err.response?.data?.detail || err.message || "Failed to analyze job match.");
         } finally {
-
             setLoading(false);
-
         }
 
     }
 
-return (
+    return (
 
         <div className="app-bg fade-in">
             <div className="orb orb-1" />
@@ -77,8 +77,24 @@ return (
                     </div>
                 </div>
 
+                {error && (
+                    <div style={{ 
+                        background: "rgba(239, 68, 68, 0.15)", 
+                        border: "1px solid rgba(239, 68, 68, 0.4)", 
+                        color: "#f87171", 
+                        padding: "12px", 
+                        borderRadius: "8px", 
+                        margin: "20px auto 0",
+                        maxWidth: "600px",
+                        textAlign: "center",
+                        fontSize: "14px"
+                    }}>
+                        ⚠️ {error}
+                    </div>
+                )}
+
                 <div style={{ textAlign: "center", marginTop: 20 }}>
-                    <button className="btn btn-primary" onClick={analyze}>
+                    <button className="btn btn-primary" onClick={analyze} disabled={loading}>
                         {loading ? "Analyzing..." : "Analyze Match"}
                     </button>
                 </div>
@@ -97,7 +113,7 @@ return (
                         <div className="card">
                             <h3 style={{ color: "#fff", marginBottom: 15 }}>✅ Matching Skills</h3>
                             <div className="chips">
-                                {result.matching_skills.map((s, i) =>
+                                {(result.matching_skills || []).map((s, i) =>
                                     <span key={i} className="chip">{s}</span>
                                 )}
                             </div>
@@ -106,7 +122,7 @@ return (
                         <div className="card">
                             <h3 style={{ color: "#fff", marginBottom: 15 }}>❌ Missing Skills</h3>
                             <ul style={{ paddingLeft: 20 }}>
-                                {result.missing_skills.map((s, i) =>
+                                {(result.missing_skills || []).map((s, i) =>
                                     <li key={i} style={{ color: "#f87171", margin: "8px 0" }}>{s}</li>
                                 )}
                             </ul>
@@ -115,7 +131,7 @@ return (
                         <div className="card">
                             <h3 style={{ color: "#fff", marginBottom: 15 }}>💡 Suggestions</h3>
                             <ul style={{ paddingLeft: 20 }}>
-                                {result.suggestions.map((s, i) =>
+                                {(result.suggestions || []).map((s, i) =>
                                     <li key={i} style={{ color: "#34d399", margin: "8px 0" }}>{s}</li>
                                 )}
                             </ul>

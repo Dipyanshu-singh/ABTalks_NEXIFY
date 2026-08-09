@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 import "../styles/transitions.css";
+import { API_BASE_URL } from "../config";
 
 const Interview = () => {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Interview = () => {
         async function loadQuestions() {
             try {
                 const res = await fetch(
-                    "https://abtalks-nexify-1.onrender.com/interview/start"
+                    `${API_BASE_URL}/interview/start`
                 );
                 const data = await res.json();
                 setQuestions(data.questions);

@@ -1,2 +1,0 @@
-John Doe Software Engineer
-Python JavaScript React FastAPI SQL Docker

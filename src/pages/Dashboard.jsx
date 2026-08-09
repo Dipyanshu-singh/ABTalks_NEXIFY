@@ -13,6 +13,8 @@ import {
   FaLightbulb,
 } from "react-icons/fa";
 
+import { API_BASE_URL } from "../config";
+
 function Dashboard() {
   const token = localStorage.getItem("token");
 
@@ -32,7 +34,7 @@ function Dashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("https://abtalks-nexify-1.onrender.com/dashboard", {
+    fetch(`${API_BASE_URL}/dashboard`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

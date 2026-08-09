@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { FaUser, FaEnvelope, FaChartLine, FaMicrophone } from "react-icons/fa";
 
+import { API_BASE_URL } from "../config";
+
 export default function Profile() {
   const token = localStorage.getItem("token");
   const user = token ? jwtDecode(token) : { login: "Guest", avatar: "" };
@@ -15,7 +17,7 @@ export default function Profile() {
 
   useEffect(() => {
     const t = localStorage.getItem("token");
-    fetch("https://abtalks-nexify-1.onrender.com/dashboard", {
+    fetch(`${API_BASE_URL}/dashboard`, {
       headers: { Authorization: `Bearer ${t}` },
     })
       .then((res) => res.json())

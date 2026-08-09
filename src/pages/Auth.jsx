@@ -10,6 +10,8 @@ import {
     FaSignInAlt,
 } from "react-icons/fa";
 
+import { API_BASE_URL } from "../config";
+
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
     const navigate = useNavigate();
@@ -112,7 +114,7 @@ return (
                     <button
                         type="button"
                         onClick={() => {
-                            window.location.href = "https://abtalks-nexify-1.onrender.com/login/github";
+                            window.location.href = `${API_BASE_URL}/login/github`;
                         }}
                         style={{
                             width: "100%",

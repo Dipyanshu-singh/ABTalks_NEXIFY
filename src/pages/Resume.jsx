@@ -1,39 +1,52 @@
 import { useState } from "react";
 import ATSDashboard from "../components/ATSDashboard";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 export default function Resume() {
 
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [analysis, setAnalysis] = useState(null);
 
     const uploadResume = async () => {
 
-        if (!file) return alert("Choose a resume");
+        if (!file) return alert("Please choose a resume file (.pdf or .docx)");
 
         const formData = new FormData();
         formData.append("file", file);
 
         try {
             setLoading(true);
+            setError(null);
 
             const res = await axios.post(
-                "https://abtalks-nexify-1.onrender.com/resume/upload",
-                formData
+                `${API_BASE_URL}/resume/upload`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                    timeout: 60000, // 60s timeout for Render free tier cold starts
+                }
             );
 
             setAnalysis(res.data.analysis);
 
         } catch (err) {
-            console.log(err);
-            alert("Upload failed");
+            console.error("Upload error:", err);
+            const msg = err.response?.data?.detail 
+                     || err.response?.data?.message 
+                     || err.message 
+                     || "Upload failed. Please check backend connection and file format.";
+            setError(msg);
         } finally {
             setLoading(false);
         }
     };
 
-return (
+    return (
         <div className="app-bg fade-in">
             <div className="orb orb-1" />
             <div className="orb orb-2" />
@@ -59,7 +72,10 @@ return (
                         <input
                             type="file"
                             accept=".pdf,.docx"
-                            onChange={(e) => setFile(e.target.files[0])}
+                            onChange={(e) => {
+                                setFile(e.target.files[0]);
+                                setError(null);
+                            }}
                             style={{
                                 display: "block",
                                 margin: "0 auto 20px",
@@ -67,8 +83,26 @@ return (
                             }}
                         />
 
-                        <button className="btn btn-primary" onClick={uploadResume}>
-                            {loading ? "Analyzing..." : "Analyze Resume"}
+                        {error && (
+                            <div style={{ 
+                                background: "rgba(239, 68, 68, 0.15)", 
+                                border: "1px solid rgba(239, 68, 68, 0.4)", 
+                                color: "#f87171", 
+                                padding: "12px", 
+                                borderRadius: "8px", 
+                                marginBottom: "20px",
+                                fontSize: "14px"
+                            }}>
+                                ⚠️ {error}
+                            </div>
+                        )}
+
+                        <button 
+                            className="btn btn-primary" 
+                            onClick={uploadResume}
+                            disabled={loading}
+                        >
+                            {loading ? "Analyzing Resume..." : "Analyze Resume"}
                         </button>
                     </div>
                 </div>
