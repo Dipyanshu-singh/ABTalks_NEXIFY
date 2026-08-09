@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { FaUser, FaEnvelope, FaChartLine, FaRobot } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaChartLine, FaMicrophone } from "react-icons/fa";
 
 export default function Profile() {
   const token = localStorage.getItem("token");
@@ -54,7 +54,7 @@ export default function Profile() {
 
             <div className="stats-grid" style={{ margin: 0 }}>
               <div className="stat-card">
-                <h3><FaRobot /> Interviews</h3>
+                <h3><FaMicrophone /> Interviews</h3>
                 <h1>{stats.interviews}</h1>
               </div>
               <div className="stat-card">
@@ -95,7 +95,7 @@ export default function Profile() {
             </div>
 
             <div className="card" style={{ background: "#e8f7ee", marginTop: 12 }}>
-              <h3 style={{ color: "#15803d", marginBottom: 10 }}>🤖 InterviewIQ AI</h3>
+              <h3 style={{ color: "#15803d", marginBottom: 10 }}>InterviewIQ AI</h3>
               <p style={{ color: "#6b7280", lineHeight: 1.7 }}>
                 Your subscription is linked to your GitHub account. Resume analysis,
                 AI interviews and performance analytics are available on your dashboard.

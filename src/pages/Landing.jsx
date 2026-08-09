@@ -75,7 +75,7 @@ function Landing() {
 
                 <div className="hero-right">
                     <div className="mock-card float-slow">
-                        <div style={{ fontSize: 60 }}>🤖</div>
+                        <div style={{ fontSize: 60 }}>🎙️</div>
                         <h2 style={{ color: "#fff", marginTop: 10 }}>AI Interview</h2>
                         <h1>92%</h1>
                         <p style={{ color: "#cbd5e1" }}>Your performance score</p>
@@ -235,7 +235,7 @@ function Landing() {
                     </div>
 
                     <div className="benefit-card">
-                        <div className="benefit-icon">🤖</div>
+                        <div className="benefit-icon">💬</div>
                         <h3>Personalized Feedback</h3>
                         <p>
                             Confidence, communication and technical evaluation after every interview.

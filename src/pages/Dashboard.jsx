@@ -5,11 +5,12 @@ import { jwtDecode } from "jwt-decode";
 import "../styles/dashboard.css";
 import {
   FaFileAlt,
-  FaRobot,
+  FaMicrophone,
   FaComments,
   FaChartLine,
   FaHistory,
   FaArrowRight,
+  FaLightbulb,
 } from "react-icons/fa";
 
 function Dashboard() {
@@ -127,7 +128,7 @@ return (
         </Link>
 
         <Link to="/interview" className="dashboard-card">
-          <FaRobot className="dash-icon" />
+          <FaMicrophone className="dash-icon" />
           <h2>AI Mock Interview</h2>
 
           <p>
@@ -183,7 +184,7 @@ return (
         </Link>
 
         <div className="dashboard-card">
-          <FaRobot className="dash-icon" />
+          <FaLightbulb className="dash-icon" />
           <h2>Coming Soon</h2>
 
           <p>

@@ -27,7 +27,7 @@ export default function Sidebar() {
 
         <div className="sidebar">
 
-<h1 className="logo">🤖 InterviewIQ</h1>
+<h1 className="logo">InterviewIQ</h1>
 
             {menu.map(item => (
 

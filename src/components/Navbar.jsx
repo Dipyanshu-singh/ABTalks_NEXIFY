@@ -5,7 +5,10 @@ import "./Navbar.css";
 import {
   FaHome,
   FaFileAlt,
-  FaRobot,
+  FaBriefcase,
+  FaComments,
+  FaHistory,
+  FaUser,
   FaChartBar,
   FaSignOutAlt,
   FaUserCircle,
@@ -14,10 +17,20 @@ import {
 function Navbar() {
   const location = useLocation();
 
+  const menu = [
+    { name: "Dashboard", icon: <FaHome />, path: "/dashboard" },
+    { name: "Resume", icon: <FaFileAlt />, path: "/resume" },
+    { name: "Job Matcher", icon: <FaBriefcase />, path: "/job-matcher" },
+    { name: "Interview", icon: <FaComments />, path: "/interview" },
+    { name: "History", icon: <FaHistory />, path: "/history" },
+    { name: "Results", icon: <FaChartBar />, path: "/analytics" },
+    { name: "Profile", icon: <FaUser />, path: "/profile" },
+  ];
+
   return (
     <nav className="navbar">
 
-<div className="nav-left">
+      <div className="nav-left">
 
         <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img
@@ -34,37 +47,16 @@ function Navbar() {
 
       <div className="nav-center">
 
-        <Link
-          to="/dashboard"
-          className={location.pathname === "/dashboard" ? "active-link" : ""}
-        >
-          <FaHome />
-          Home
-        </Link>
-
-        <Link
-          to="/resume"
-          className={location.pathname === "/resume" ? "active-link" : ""}
-        >
-          <FaFileAlt />
-          Resume
-        </Link>
-
-        <Link
-          to="/interview"
-          className={location.pathname === "/interview" ? "active-link" : ""}
-        >
-          <FaRobot />
-          Interview
-        </Link>
-
-        <Link
-          to="/analytics"
-          className={location.pathname === "/analytics" ? "active-link" : ""}
-        >
-          <FaChartBar />
-          Results
-        </Link>
+        {menu.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={location.pathname === item.path ? "active-link" : ""}
+          >
+            {item.icon}
+            {item.name}
+          </Link>
+        ))}
 
       </div>
 

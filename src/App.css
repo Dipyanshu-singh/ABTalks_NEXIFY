@@ -501,12 +501,12 @@
 
 /* Features */
 .feature {
-  min-height: 80vh;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 8%;
-  gap: 60px;
+  padding: 56px 8%;
+  gap: 48px;
   position: relative;
   z-index: 2;
 }
@@ -545,7 +545,7 @@
 
 /* Benefits */
 .benefits {
-  padding: 120px 8%;
+  padding: 64px 8%;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -601,7 +601,7 @@
 
 /* Workflow */
 .workflow {
-  padding: 120px 8%;
+  padding: 64px 8%;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -615,7 +615,7 @@
 .workflow-subtitle {
   color: var(--text-secondary);
   font-size: 20px;
-  margin-bottom: 70px;
+  margin-bottom: 42px;
 }
 
 .workflow-container {
@@ -679,7 +679,7 @@
   justify-content: center;
   gap: 35px;
   flex-wrap: wrap;
-  padding: 100px 8%;
+  padding: 56px 8%;
   position: relative;
   z-index: 2;
 }
@@ -712,7 +712,7 @@
 
 /* Testimonials */
 .testimonials {
-  padding: 120px 8%;
+  padding: 64px 8%;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -726,7 +726,7 @@
 .testimonial-sub {
   color: var(--text-secondary);
   font-size: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .testimonial-grid {
@@ -766,7 +766,7 @@
 
 /* FAQ */
 .faq {
-  padding: 100px 8%;
+  padding: 56px 8%;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -809,7 +809,7 @@
 
 /* CTA */
 .cta {
-  padding: 140px 8%;
+  padding: 72px 8%;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -1102,7 +1102,7 @@
   background: var(--bg-black);
   color: var(--text-primary);
   min-height: 100vh;
-  padding: 30px 30px 30px 290px;
+  padding: 30px;
 }
 
 .main-content {

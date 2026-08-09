@@ -179,7 +179,7 @@ const Dashboard = () => {
             marginTop: "35px",
           }}
         >
-          <h2>🤖 AI Feedback</h2>
+          <h2>💬 AI Feedback</h2>
 
           <p
             style={{

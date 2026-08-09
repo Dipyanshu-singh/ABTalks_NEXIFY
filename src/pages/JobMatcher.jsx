@@ -15,7 +15,7 @@ export default function JobMatcher() {
             setLoading(true);
 
             const res = await axios.post(
-                "http://127.0.0.1:8000/job/match",
+                "https://abtalks-nexify-1.onrender.com/job/match",
                 {
                     resume_text: resume,
                     job_description: jd,

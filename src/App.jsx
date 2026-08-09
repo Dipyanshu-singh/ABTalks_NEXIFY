@@ -14,37 +14,40 @@ import Interview from "./pages/Interview";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
 import Analytics from "./pages/Analytics";
+import PageTransition from "./components/PageTransition";
 
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <PageTransition>
+        <Routes>
 
-        {/* Public Routes */}
-        <Route path="/" element={<Landing />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/auth-success" element={<AuthSuccess />} />
+          {/* Public Routes */}
+          <Route path="/" element={<Landing />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/auth-success" element={<AuthSuccess />} />
 
-        {/* Protected Routes */}
-        <Route
-          element={
-            <ProtectedRoute>
-              <MainLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/job-matcher" element={<JobMatcher />} />
-          <Route path="/interview" element={<Interview />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/analytics" element={<Analytics />} />
-        </Route>
+          {/* Protected Routes */}
+          <Route
+            element={
+              <ProtectedRoute>
+                <MainLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/job-matcher" element={<JobMatcher />} />
+            <Route path="/interview" element={<Interview />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/analytics" element={<Analytics />} />
+          </Route>
 
-      </Routes>
+        </Routes>
+      </PageTransition>
     </BrowserRouter>
   );
 }

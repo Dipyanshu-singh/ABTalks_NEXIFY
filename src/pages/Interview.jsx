@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/interview.css";
 import {
     FaMicrophone,
-    FaVideo,
     FaArrowRight,
-    FaStopCircle,
     FaClock,
     FaStop,
 } from "react-icons/fa";
+
+import "../styles/transitions.css";
 
 const Interview = () => {
     const navigate = useNavigate();
@@ -69,7 +69,7 @@ const Interview = () => {
         async function loadQuestions() {
             try {
                 const res = await fetch(
-                    "http://127.0.0.1:8000/interview/start"
+                    "https://abtalks-nexify-1.onrender.com/interview/start"
                 );
                 const data = await res.json();
                 setQuestions(data.questions);
@@ -125,7 +125,7 @@ const Interview = () => {
     if (loading) {
         return (
             <div className="interview-page" style={{ textAlign: "center", paddingTop: 80 }}>
-                <div style={{ fontSize: 60 }}>🤖</div>
+                <div style={{ fontSize: 60 }}>🎙️</div>
                 <h2 style={{ marginTop: 20 }}>Loading AI Interview...</h2>
             </div>
         );
@@ -144,56 +144,67 @@ const Interview = () => {
 
                 {/* Header */}
                 <div className="interview-header">
-                    <h1>AI Mock Interview</h1>
+                    <div>
+                        <h1>AI Mock Interview</h1>
+                        <p className="interview-sub">
+                            Powered by AI • Speak naturally, we'll transcribe live
+                        </p>
+                    </div>
 
-                    <div className="timer">
-                        <FaClock /> {minutes}:{seconds}
+                    <div className="interview-header-right">
+                        <div className="ai-badge">
+                            <span className="ai-dot" /> AI Active
+                        </div>
+                        <div className="timer">
+                            <FaClock /> {minutes}:{seconds}
+                        </div>
                     </div>
                 </div>
 
-                {/* Video & Question */}
-                <div className="interview-grid">
+                {/* Focused Interview Card */}
+                <div className="interview-card-wrap">
 
-                    {/* Webcam */}
-                    <div className="card">
-                        <div style={{ textAlign: "center", paddingTop: 40 }}>
-                            <FaVideo
-                                style={{
-                                    fontSize: "80px",
-                                    color: "#7c3aed",
-                                }}
-                            />
-                            <h2 style={{ marginTop: 20 }}>Camera Preview</h2>
-                            <p style={{ color: "#9ca3af" }}>
-                                Webcam integration can be added later.
-                            </p>
+                    <div className="interview-card">
+
+                        {/* Question header */}
+                        <div className="iq-question-head">
+                            <span className="iq-step">Question {index + 1}</span>
+                            <span className="iq-count">
+                                {index + 1} / {questions.length}
+                            </span>
                         </div>
-                    </div>
 
-                    {/* Question */}
-                    <div className="card">
-
-                        <h2 style={{ marginBottom: 20 }}>
-                            Question {index + 1}
-                        </h2>
-
-                        <div className="question-box">
+                        {/* AI Question */}
+                        <div className="question-box" key={index}>
+                            <div className="ai-tag">
+                                <FaMicrophone /> AI-Written Question
+                            </div>
                             <h3>{questions[index]}</h3>
                         </div>
 
-                        {/* Speech-to-Text controls */}
+                        {/* Speech-to-Text live textbox */}
+                        <div className="speech-area-label">
+                            🗣️ Your live answer appears here
+                        </div>
+
                         {speechSupported ? (
                             <>
                                 <div className="transcript-box">
                                     {listening && (
                                         <div className="recording-indicator">
-                                            <FaMicrophone /> Listening...
+                                            <FaMicrophone /> Listening... speak now
                                         </div>
                                     )}
                                     <p style={{ marginTop: listening ? 8 : 0 }}>
-                                        {transcript}
+                                        {transcript || (
+                                            <span className="transcript-placeholder">
+                                                {listening
+                                                    ? "I'm listening… what would you say?"
+                                                    : "Press Start Speaking and your answer will appear here in real time."}
+                                            </span>
+                                        )}
                                         {interim && (
-                                            <span style={{ color: "#8b5cf6" }}>
+                                            <span style={{ color: "#16a34a" }}>
                                                 {" "}
                                                 {interim}
                                             </span>
@@ -201,38 +212,56 @@ const Interview = () => {
                                     </p>
                                 </div>
 
-                                {!listening ? (
+                                <div className="speech-buttons">
+                                    {!listening ? (
+                                        <button
+                                            className="interview-btn primary-btn"
+                                            onClick={startListening}
+                                        >
+                                            <FaMicrophone />
+                                            &nbsp; Start Speaking
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="interview-btn secondary-btn"
+                                            onClick={stopListening}
+                                        >
+                                            <FaStop />
+                                            &nbsp; Stop Recording
+                                        </button>
+                                    )}
+
                                     <button
-                                        className="interview-btn primary-btn"
-                                        onClick={startListening}
+                                        onClick={nextQuestion}
+                                        className="interview-btn next-btn"
                                     >
-                                        <FaMicrophone />
-                                        &nbsp; Start Speaking
+                                        Next Question
+                                        <FaArrowRight style={{ marginLeft: "10px" }} />
                                     </button>
-                                ) : (
-                                    <button
-                                        className="interview-btn secondary-btn"
-                                        onClick={stopListening}
-                                    >
-                                        <FaStop />
-                                        &nbsp; Stop Recording
-                                    </button>
-                                )}
+                                </div>
                             </>
                         ) : (
-                            <p style={{ color: "#f87171", margin: "15px 0" }}>
-                                ⚠️ Speech recognition is not supported in this
-                                browser. Please use Chrome or Edge.
-                            </p>
+                            <>
+                                <div className="transcript-box">
+                                    <p>
+                                        <span className="transcript-placeholder">
+                                            Speech recognition is not supported in this
+                                            browser.
+                                        </span>
+                                    </p>
+                                </div>
+                                <p style={{ color: "#f87171", margin: "10px 0", textAlign: "center" }}>
+                                    ⚠️ Please use Chrome or Edge for voice input.
+                                </p>
+                                <button
+                                    onClick={nextQuestion}
+                                    className="interview-btn next-btn"
+                                >
+                                    Next Question
+                                    <FaArrowRight style={{ marginLeft: "10px" }} />
+                                </button>
+                            </>
                         )}
-
-                        <button
-                            onClick={nextQuestion}
-                            className="interview-btn primary-btn"
-                        >
-                            Next Question
-                            <FaArrowRight style={{ marginLeft: "10px" }} />
-                        </button>
 
                     </div>
 
